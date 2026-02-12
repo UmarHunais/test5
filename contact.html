@@ -11,6 +11,49 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    
+        const form = document.getElementById("contactForm");
+    
+        if (form) {
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+    
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const phone = document.getElementById("phone").value;
+                const business = document.getElementById("business").value;
+    
+                const serviceSelect = document.getElementById("service");
+                const service = serviceSelect.options[serviceSelect.selectedIndex].text;
+    
+                const message = document.getElementById("message").value;
+    
+                const whatsappMessage =
+    `New Contact Form Submission:
+    
+    Name: ${name}
+    Email: ${email}
+    Phone: ${phone}
+    Business: ${business}
+    Service: ${service}
+    
+    Project Details:
+    ${message}`;
+    
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+                const whatsappNumber = "94775123451";
+    
+                window.location.href =
+                    `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            });
+        }
+    
+    });
+    </script>
+    
 <body>
     <!-- Navigation -->
     <nav class="navbar scrolled" id="navbar">
